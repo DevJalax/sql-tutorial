@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/default_db
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+multi-tenancy:
+  tenants:
+    tenant1:
+      jdbc-url: jdbc:mysql://localhost:3306/tenant1
+      username: tenant1_user
+      password: tenant1_password
+    tenant2:
+      jdbc-url: jdbc:mysql://localhost:3306/tenant2
+      username: tenant2_user
+      password: tenant2_password
